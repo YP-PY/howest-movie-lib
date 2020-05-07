@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
+  <metadata>
+    <id>howest-movie-lib</id>
+    <version>0.0.1</version>
+    <authors>Perneel Yorick</authors>
+    <owners>Perneel Yorick</owners>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>Package Description</description>
+    <dependencies>
+      <group targetFramework=".NETCoreApp3.1">
+        <dependency id="Microsoft.EntityFrameworkCore.SqlServer" version="3.1.3" exclude="Build,Analyzers" />
+      </group>
+    </dependencies>
+  </metadata>
+  <files>
+    <file src="C:\Users\Yorick\Google Drive\school\hogeschool\2019-2020\S4\Software Devolpment IV CCCP .NET Technology\project\howest-movie-lib\howest-movie-lib\bin\Debug\netcoreapp3.1\howest-movie-lib.runtimeconfig.json" target="lib\netcoreapp3.1\howest-movie-lib.runtimeconfig.json" />
+    <file src="C:\Users\Yorick\Google Drive\school\hogeschool\2019-2020\S4\Software Devolpment IV CCCP .NET Technology\project\howest-movie-lib\howest-movie-lib\bin\Debug\netcoreapp3.1\howest-movie-lib.dll" target="lib\netcoreapp3.1\howest-movie-lib.dll" />
+  </files>
+</package>
