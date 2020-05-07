@@ -7,11 +7,11 @@ namespace howest_movie_lib.Library.Services
 {
     public class GenreMovieService
     {
-        db_moviesContext db = new db_moviesContext();
-        DbSet<GenreMovie> genreMovie;
+        db_moviesContext db = new db_moviesContext();  // <== connected with the database
+        DbSet<GenreMovie> genreMovie; // <== empty genreMovie object
         public GenreMovieService()
         {
-            this.genreMovie = db.GenreMovie;
+            this.genreMovie = db.GenreMovie; // <== initialize movie object # I do this because i'm to lazy to write 
         }
 
         public GenreMovie GetGenreMovie(int movieId, int genreId)
