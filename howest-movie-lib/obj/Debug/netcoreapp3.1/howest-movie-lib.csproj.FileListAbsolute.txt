@@ -1,0 +1,10 @@
+C:\Users\Yorick\Google Drive\school\hogeschool\2019-2020\S4\Software Devolpment IV CCCP .NET Technology\project\howest-movie-lib\howest-movie-lib\bin\Debug\netcoreapp3.1\howest-movie-lib.deps.json
+C:\Users\Yorick\Google Drive\school\hogeschool\2019-2020\S4\Software Devolpment IV CCCP .NET Technology\project\howest-movie-lib\howest-movie-lib\bin\Debug\netcoreapp3.1\howest-movie-lib.dll
+C:\Users\Yorick\Google Drive\school\hogeschool\2019-2020\S4\Software Devolpment IV CCCP .NET Technology\project\howest-movie-lib\howest-movie-lib\bin\Debug\netcoreapp3.1\howest-movie-lib.pdb
+C:\Users\Yorick\Google Drive\school\hogeschool\2019-2020\S4\Software Devolpment IV CCCP .NET Technology\project\howest-movie-lib\howest-movie-lib\obj\Debug\netcoreapp3.1\howest-movie-lib.csprojAssemblyReference.cache
+C:\Users\Yorick\Google Drive\school\hogeschool\2019-2020\S4\Software Devolpment IV CCCP .NET Technology\project\howest-movie-lib\howest-movie-lib\obj\Debug\netcoreapp3.1\howest-movie-lib.AssemblyInfoInputs.cache
+C:\Users\Yorick\Google Drive\school\hogeschool\2019-2020\S4\Software Devolpment IV CCCP .NET Technology\project\howest-movie-lib\howest-movie-lib\obj\Debug\netcoreapp3.1\howest-movie-lib.AssemblyInfo.cs
+C:\Users\Yorick\Google Drive\school\hogeschool\2019-2020\S4\Software Devolpment IV CCCP .NET Technology\project\howest-movie-lib\howest-movie-lib\obj\Debug\netcoreapp3.1\howest-movie-lib.dll
+C:\Users\Yorick\Google Drive\school\hogeschool\2019-2020\S4\Software Devolpment IV CCCP .NET Technology\project\howest-movie-lib\howest-movie-lib\obj\Debug\netcoreapp3.1\howest-movie-lib.pdb
+C:\Users\Yorick\Google Drive\school\hogeschool\2019-2020\S4\Software Devolpment IV CCCP .NET Technology\project\howest-movie-lib\howest-movie-lib\bin\Debug\netcoreapp3.1\howest-movie-lib.runtimeconfig.json
+C:\Users\Yorick\Google Drive\school\hogeschool\2019-2020\S4\Software Devolpment IV CCCP .NET Technology\project\howest-movie-lib\howest-movie-lib\bin\Debug\netcoreapp3.1\howest-movie-lib.runtimeconfig.dev.json
