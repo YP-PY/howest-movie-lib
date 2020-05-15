@@ -12,7 +12,7 @@ namespace howest_movie_lib.Library.Services
             this.genres = db.Genres;
         }
 
-        public Genres GetGenre(int id){
+        public Genres GetGenre(long id){
             var results = genres.Where(c => c.Id == id);
             if (results.Count() == 0)
                 return null;

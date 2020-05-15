@@ -14,7 +14,7 @@ namespace howest_movie_lib.Library.Services
             this.shopCustomer = db.ShopCustomer;
         }
 
-        public ShopCustomer GetShopCustomer(int id)
+        public ShopCustomer GetShopCustomer(long id)
         {
             var results = (shopCustomer.Where(c => c.Id == id));
             if (results.Count() == 0)

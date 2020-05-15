@@ -14,12 +14,23 @@ namespace howest_movie_lib.Library.Services
             this.persons = db.Persons;
         }
 
-        public Persons GetPersons(int personId)
+        public Persons GetPerson(long personId)
         {
             var results = (persons.Where(c => c.Id == personId));
             if (results.Count() == 0)
                 return null;
             return results.First();
+        }
+        public IEnumerable<Persons> GetPersons(IEnumerable<long> personIds)
+        {
+            List<Persons> results = new List<Persons>();
+            foreach (long id in personIds)
+            {
+                Persons human = GetPerson(id);
+                if (human != null)
+                    results.Add(human);
+            }
+            return results;
         }
         public IEnumerable<Persons> GetAll()
         {

@@ -14,12 +14,26 @@ namespace howest_movie_lib.Library.Services
             this.movieRole = db.MovieRole;
         }
 
-        public MovieRole GetMovieRole(int movieId, int personId)
+        public MovieRole GetMovieRole(long movieId, long personId)
         {
             var results = (movieRole.Where(c => c.MovieId == movieId && c.PersonId == personId));
             if (results.Count() == 0)
                 return null;
             return results.First();
+        }
+
+        public IEnumerable<MovieRole> GetRolesOfMovie(long movieId, string role){
+            var results = (movieRole.Where(c => c.MovieId == movieId && c.Role.ToLower().Equals(role.ToLower())));
+            if (results.Count() == 0)
+                return null;
+            return results;
+        }
+
+        public IEnumerable<MovieRole> GetRolesOfMovie(long movieId){
+            var results = (movieRole.Where(c => c.MovieId == movieId));
+            if (results.Count() == 0)
+                return null;
+            return results;
         }
         public IEnumerable<MovieRole> GetAll()
         {

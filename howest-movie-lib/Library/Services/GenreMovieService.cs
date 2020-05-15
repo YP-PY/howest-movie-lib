@@ -7,19 +7,25 @@ namespace howest_movie_lib.Library.Services
 {
     public class GenreMovieService
     {
-        db_moviesContext db = new db_moviesContext();  // <== connected with the database
-        DbSet<GenreMovie> genreMovie; // <== empty genreMovie object
+        db_moviesContext db = new db_moviesContext();
+        DbSet<GenreMovie> genreMovie;
         public GenreMovieService()
         {
-            this.genreMovie = db.GenreMovie; // <== initialize movie object # I do this because i'm to lazy to write 
+            this.genreMovie = db.GenreMovie;
         }
 
-        public GenreMovie GetGenreMovie(int movieId, int genreId)
+        public List<string> GetGenres(long movieId)
         {
-            var results = (genreMovie.Where(c => c.MovieId == movieId && c.GenreId == genreId));
+            var results = (genreMovie.Where(c => c.MovieId == movieId));
             if (results.Count() == 0)
                 return null;
-            return results.First();
+            GenresService genreService = new GenresService();
+            List<string> genres = new List<string>();
+            foreach (var genreMovie in results)
+            {
+                genres.Add(genreService.GetGenre(genreMovie.GenreId).Name);
+            }
+            return genres;
         }
 
         public void Add(GenreMovie newGenreMovie)

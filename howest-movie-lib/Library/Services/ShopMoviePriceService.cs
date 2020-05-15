@@ -2,7 +2,7 @@ using howest_movie_lib.Library.Models;
 using System.Collections.Generic;
 using System.Linq; // linq extension methods
 using Microsoft.EntityFrameworkCore;
-
+using howest_movie_lib.Library.Exceptions;
 namespace howest_movie_lib.Library.Services
 {
     public class ShopMoviePriceService
@@ -14,12 +14,12 @@ namespace howest_movie_lib.Library.Services
             this.shopMoviePrice = db.ShopMoviePrice;
         }
 
-        public ShopMoviePrice GetShopMoviePrice(int movieId)
+        public decimal GetShopMoviePrice(long movieId)
         {
             var results = (shopMoviePrice.Where(c => c.MovieId == movieId));
             if (results.Count() == 0)
-                return null;
-            return results.First();
+                throw new MovieNotFoundException(string.Format("The price of a movie Could not be found."));
+            return results.First().UnitPrice;
         }
         public IEnumerable<ShopMoviePrice> GetAll()
         {

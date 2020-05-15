@@ -14,7 +14,7 @@ namespace howest_movie_lib.Library.Services
             this.shopOrderDetail = db.ShopOrderDetail;
         }
 
-        public ShopOrderDetail GetShopOrderDetail(int movieId, int orderId)
+        public ShopOrderDetail GetShopOrderDetail(long movieId, long orderId)
         {
             var results = (shopOrderDetail.Where(c => c.MovieId == movieId && c.OrderId == orderId));
             if (results.Count() == 0)

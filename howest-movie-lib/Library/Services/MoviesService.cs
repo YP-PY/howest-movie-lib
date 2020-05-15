@@ -15,7 +15,7 @@ namespace howest_movie_lib.Library.Services
             this.movies = db.Movies;
         }
 
-        public Movies GetMovies(int id)
+        public Movies GetMovies(long id)
         {
             var results = (movies.Where(c => c.Id == id));
             if (results.Count() == 0)
