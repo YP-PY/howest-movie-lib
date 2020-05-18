@@ -25,15 +25,23 @@ namespace howest_movie_lib.Library.Services
         {
             return shopMoviePrice;
         }
-        public void Add(ShopMoviePrice newShopMoviePrice)
+        public void Add(long movieId, decimal unitPrice)
         {
-            db.ShopMoviePrice.Add(newShopMoviePrice);
+            shopMoviePrice.Add(new ShopMoviePrice{
+                MovieId = movieId,
+                UnitPrice = unitPrice
+            });
             db.SaveChanges();
         }
-
-        public void Update(ShopMoviePrice updShopMoviePrice)
+        public bool IsPopulated(){
+            return shopMoviePrice.Count() > 0;
+        }
+        public void Update(long movieId, decimal newPrice)
         {
-            db.ShopMoviePrice.Update(updShopMoviePrice);
+            shopMoviePrice.Update(new ShopMoviePrice{
+                MovieId = movieId,
+                UnitPrice = newPrice
+            });
             db.SaveChanges();
         }
 
@@ -41,13 +49,13 @@ namespace howest_movie_lib.Library.Services
         {
             if (delShopMoviePrice != null)
             {
-                db.ShopMoviePrice.Remove(delShopMoviePrice);
+                shopMoviePrice.Remove(delShopMoviePrice);
                 db.SaveChanges();
             }
         }
         public void DeleteMultiple(List<ShopMoviePrice> shopMoviePrices)
         {
-            db.ShopMoviePrice.RemoveRange(shopMoviePrices);
+            shopMoviePrice.RemoveRange(shopMoviePrices);
             db.SaveChanges();
         }
     }
