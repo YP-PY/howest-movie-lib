@@ -14,20 +14,32 @@ namespace howest_movie_lib.Library.Services
             this.shopOrderDetail = db.ShopOrderDetail;
         }
 
-        public ShopOrderDetail GetShopOrderDetail(long movieId, long orderId)
+        public IEnumerable<ShopOrderDetail> GetShopOrderDetails(long orderId)
         {
-            var results = (shopOrderDetail.Where(c => c.MovieId == movieId && c.OrderId == orderId));
+            var results = (shopOrderDetail.Where(c => c.OrderId == orderId));
             if (results.Count() == 0)
                 return null;
-            return results.First();
+            return results;
         }
         public IEnumerable<ShopOrderDetail> GetAll()
         {
             return shopOrderDetail;
         }
-        public void Add(ShopOrderDetail newShopOrderDetail)
+
+        public void Add(long orderId, IEnumerable<long> movieIds)
         {
-            db.ShopOrderDetail.Add(newShopOrderDetail);
+            foreach (var item in movieIds)
+                Add(orderId, item);
+            db.SaveChanges();
+        }
+        public void Add(long orderId, long movieId)
+        {
+            db.ShopOrderDetail.Add(new ShopOrderDetail
+            {
+                MovieId = movieId,
+                OrderId = orderId,
+                UnitPrice = new ShopMoviePriceService().GetShopMoviePrice(movieId)
+            });
             db.SaveChanges();
         }
 
@@ -37,17 +49,9 @@ namespace howest_movie_lib.Library.Services
             db.SaveChanges();
         }
 
-        public void Delete(ShopOrderDetail delShopOrderDetail)
+        public void Delete(long orderId)
         {
-            if (delShopOrderDetail != null)
-            {
-                db.ShopOrderDetail.Remove(delShopOrderDetail);
-                db.SaveChanges();
-            }
-        }
-        public void DeleteMultiple(List<ShopOrderDetail> shopOrderDetails)
-        {
-            db.ShopOrderDetail.RemoveRange(shopOrderDetails);
+            db.ShopOrderDetail.RemoveRange(GetShopOrderDetails(orderId));
             db.SaveChanges();
         }
     }

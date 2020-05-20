@@ -2,7 +2,7 @@ using howest_movie_lib.Library.Models;
 using System.Collections.Generic;
 using System.Linq; // linq extension methods
 using Microsoft.EntityFrameworkCore;
-
+using System;
 namespace howest_movie_lib.Library.Services
 {
     public class ShopOrderService
@@ -25,10 +25,20 @@ namespace howest_movie_lib.Library.Services
         {
             return shopOrder;
         }
-        public void Add(ShopOrder newShopOrder)
+        public long Add(long customerId, DateTime orderDate, string street,
+                        string city, string postalCode, string Country)
         {
-            db.ShopOrder.Add(newShopOrder);
+            var order = db.ShopOrder.Add(new ShopOrder
+            {
+                CustomerId = customerId,
+                OrderDate = orderDate,
+                Street = street,
+                City = city,
+                PostalCode = postalCode,
+                Country = Country,
+            });
             db.SaveChanges();
+            return order.Entity.Id;
         }
 
         public void Update(ShopOrder updShopOrder)
@@ -37,17 +47,18 @@ namespace howest_movie_lib.Library.Services
             db.SaveChanges();
         }
 
-        public void Delete(ShopOrder delShopOrder)
+        public void Delete(long orderId)
         {
-            if (delShopOrder != null)
-            {
-                db.ShopOrder.Remove(delShopOrder);
-                db.SaveChanges();
-            }
+            new ShopOrderDetailService().Delete(orderId);
+            db.ShopOrder.Remove(
+                GetShopOrder(orderId)
+            );
+            db.SaveChanges();
         }
-        public void DeleteMultiple(List<ShopOrder> shopOrders)
+        public void DeleteMultiple(List<long> orderIds)
         {
-            db.ShopOrder.RemoveRange(shopOrders);
+            foreach (long id in orderIds)
+                Delete(id);
             db.SaveChanges();
         }
     }

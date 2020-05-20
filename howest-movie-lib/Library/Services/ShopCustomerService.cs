@@ -2,7 +2,7 @@ using howest_movie_lib.Library.Models;
 using System.Collections.Generic;
 using System.Linq; // linq extension methods
 using Microsoft.EntityFrameworkCore;
-
+using howest_movie_lib.Library.Exceptions;
 namespace howest_movie_lib.Library.Services
 {
     public class ShopCustomerService
@@ -21,19 +21,50 @@ namespace howest_movie_lib.Library.Services
                 return null;
             return results.First();
         }
+        public ShopCustomer GetShopCustomer(string aspnetId)
+        {
+            var results = (shopCustomer.Where(c => c.UserId == aspnetId));
+            if (results.Count() == 0)
+                return null;
+            return results.First();
+        }
         public IEnumerable<ShopCustomer> GetAll()
         {
             return shopCustomer;
         }
-        public void Add(ShopCustomer newShopCustomer)
+        public long Add(string aspNetId, string name, string street,
+        string city, string postalcode, string country)
         {
-            db.ShopCustomer.Add(newShopCustomer);
+            var customerList = shopCustomer.ToList();
+            foreach (var customer in customerList)
+                if (customer.UserId.Equals(aspNetId))
+                    throw new CustomerException("customer already exists");
+            var addedcustomer = db.ShopCustomer.Add(new ShopCustomer
+            {
+                UserId = aspNetId,
+                Name = name,
+                Street = street,
+                City = city,
+                PostalCode = postalcode,
+                Country = country
+            });
+            
             db.SaveChanges();
+            return addedcustomer.Entity.Id;
         }
-
-        public void Update(ShopCustomer updShopCustomer)
+        public void Update(long id, string aspNetId, string name, string street,
+        string city, string postalcode, string country)
         {
-            db.ShopCustomer.Update(updShopCustomer);
+            db.ShopCustomer.Update(new ShopCustomer
+            {
+                Id = id,
+                UserId = aspNetId,
+                Name = name,
+                Street = street,
+                City = city,
+                PostalCode = postalcode,
+                Country = country
+            });
             db.SaveChanges();
         }
 
