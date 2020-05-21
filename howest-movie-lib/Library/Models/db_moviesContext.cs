@@ -15,7 +15,6 @@ namespace howest_movie_lib.Library.Models
         {
         }
 
-        public virtual DbSet<AspNetUsers> AspNetUsers { get; set; }
         public virtual DbSet<GenreMovie> GenreMovie { get; set; }
         public virtual DbSet<Genres> Genres { get; set; }
         public virtual DbSet<MovieRole> MovieRole { get; set; }
@@ -36,25 +35,6 @@ namespace howest_movie_lib.Library.Models
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<AspNetUsers>(entity =>
-            {
-                entity.HasIndex(e => e.NormalizedEmail)
-                    .HasName("EmailIndex");
-
-                entity.HasIndex(e => e.NormalizedUserName)
-                    .HasName("UserNameIndex")
-                    .IsUnique()
-                    .HasFilter("([NormalizedUserName] IS NOT NULL)");
-
-                entity.Property(e => e.Email).HasMaxLength(256);
-
-                entity.Property(e => e.NormalizedEmail).HasMaxLength(256);
-
-                entity.Property(e => e.NormalizedUserName).HasMaxLength(256);
-
-                entity.Property(e => e.UserName).HasMaxLength(256);
-            });
-
             modelBuilder.Entity<GenreMovie>(entity =>
             {
                 entity.HasKey(e => new { e.MovieId, e.GenreId })

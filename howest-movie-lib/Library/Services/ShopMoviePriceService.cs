@@ -18,7 +18,7 @@ namespace howest_movie_lib.Library.Services
         {
             var results = (shopMoviePrice.Where(c => c.MovieId == movieId));
             if (results.Count() == 0)
-                throw new MovieNotFoundException(string.Format("The price of a movie Could not be found."));
+                throw new MovieNotFoundException(string.Format("The price of a movie could not be found."));
             return results.First().UnitPrice;
         }
         public IEnumerable<ShopMoviePrice> GetAll()

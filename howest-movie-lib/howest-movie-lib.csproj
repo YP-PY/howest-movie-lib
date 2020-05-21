@@ -4,7 +4,7 @@
     <TargetFramework>netcoreapp3.1</TargetFramework>
     <RootNamespace>howest_movie_lib</RootNamespace>
     <PackageId>howest-movie-lib</PackageId>
-    <Version>0.2.4</Version>
+    <Version>0.2.5</Version>
     <Authors>Perneel Yorick</Authors>
   </PropertyGroup>
 
